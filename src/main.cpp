@@ -173,7 +173,28 @@ void loop(void) {
   int temperature = reading;
 
 
-  // since I don't have a good way of sending 2 int's at once i sent it as a weird string a123,b123
+  /* Current send method, not using a string on the teensy side */
+  Serial.print("a");
+  Serial.print(temperature);
+  Serial.print(",");
+  Serial.print("b");
+  Serial.println(psi);
+  
+  mySerial.print("a");
+  mySerial.print(temperature);
+  mySerial.print(",");
+  mySerial.print("b");
+  mySerial.println(psi);
+
+
+
+
+
+
+
+
+  /* New send method that will parse as a string on the other side */
+  /*
   Serial.print(temperature);
   Serial.print(",");
   Serial.println(psi);
@@ -184,6 +205,7 @@ void loop(void) {
     mySerial.print(",");
     mySerial.println(psi);
   }
+  */
 
   // in my case, this needs to be slower than the time it takes to run a loop on the teensy at the far end
   delay(200);
